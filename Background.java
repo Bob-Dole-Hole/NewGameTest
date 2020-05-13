@@ -1,18 +1,18 @@
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Screen;
 import javafx.geometry.Rectangle2D;
-
-
 public class Background 
 {
-    private final int stageWidth = 800;
-    private final int stageHeight = 600;
+	private final Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+    private final double stageWidth = screenBounds.getWidth();
+    private final double stageHeight = screenBounds.getHeight();
+    private final int moveSpeed = 2;
     private double viewportPosX;
     private double viewportPosY;
     private Image bg;
     private ImageView bgImageView;
     private Rectangle2D bgViewport;
-    public final static int moveSpeed = 2;
     public Background(int viewportPosX, int viewportPosY, Image bg, ImageView bgImageView, Rectangle2D bgViewport)
     {
         this.viewportPosX = viewportPosX;
@@ -60,15 +60,15 @@ public class Background
     }
     public Image getBackground()
     {
-        return this.bg;
+        return bg;
     }
     public ImageView getBackgroundImageView()
     {
-        return this.bgImageView;
+        return bgImageView;
     }
     public Rectangle2D getBackgroundViewport()
     {
-        return this.bgViewport;
+        return bgViewport;
     }
     public double getPosX()
     {
@@ -76,7 +76,7 @@ public class Background
     }
     public double getPosY()
     {
-        return this.viewportPosY;
+        return viewportPosY;
     }
     public void setBackground(Image bg)
     {
